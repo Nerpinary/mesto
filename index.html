@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Путешествия по России">
+  <meta name="author" content="Максим Ситников">
+  <title>Место</title>
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <a class="header__logo" href="#"></a>
+    </header>
+
+    <main class="content">
+      
+      <section class="profile">
+        <div class="profile__description">
+          <img class="profile__avatar" src="./images/avatar.png">
+          <div class="profile__info">
+            <div class="profile__name-button">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"></button>
+            </div>
+            <p class="profile__job">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+
+      <section class="places">
+        <ul class="places__list">
+          <li class="places__place place">
+            <img class="place__image" src="./images/karachaevsk.jpg">
+            <div class="place__text">
+              <p class="place__name">Карачаевск</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+          <li class="places__place place">
+            <img class="place__image" src="./images/elbrus.jpg">
+            <div class="place__text">
+              <p class="place__name">Гора Эльбрус</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+          <li class="places__place place">
+            <img class="place__image" src="./images/dombai.jpg">
+            <div class="place__text">
+              <p class="place__name">Домбай</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+          <li class="places__place place">
+            <img class="place__image" src="./images/baikal.jpg">
+            <div class="place__text">
+              <p class="place__name">Озеро Байкал</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+          <li class="places__place place">
+            <img class="place__image" src="./images/kamchatka.jpg">
+            <div class="place__text">
+              <p class="place__name">Камчатка</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+          <li class="places__place place">
+            <img class="place__image" src="./images/ruskeala.jpg">
+            <div class="place__text">
+              <p class="place__name">Рускеала</p>
+              <button class="place__like place__like_status_disabled"></button>
+            </div>  
+          </li>
+        </ul>
+      </section>  
+
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>
