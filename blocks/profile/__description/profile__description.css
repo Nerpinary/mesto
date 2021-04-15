@@ -3,5 +3,10 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    
+}
+
+@media screen and (max-width: 730px) {
+    .profile__description {
+        flex-direction: column;
+    }
 }
