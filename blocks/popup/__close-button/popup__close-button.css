@@ -1,8 +1,7 @@
 .popup__close-button {
-    position: fixed;
-    left: calc(50% + 215px);
-    bottom: calc(50% + 165px);
     background-image: url(../../../images/close.png);
+    position: absolute;
+    transform: translate(239px, -189px);
     background-size: 40px;
     background-position: center;
     width: 48px;
@@ -29,10 +28,9 @@
 
 @media screen and (max-width: 550px) {
     .popup__close-button {
-        left: calc(50% + 104px);
-        bottom: calc(50% + 178px);
-        width: 37px;
-        height: 37px;
+        transform: translate(122px, -189px);
+        width: 38px;
+        height: 38px;
         background-size: 30px;
     }
 }
