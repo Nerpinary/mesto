@@ -23,12 +23,12 @@
           <div class="profile__info">
             <div class="profile__name-button">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button class="profile__edit-button" type="button"></button>
             </div>
             <p class="profile__job">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
 
       <section class="places">
@@ -36,43 +36,43 @@
           <li class="places__place place">
             <img class="place__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
             <div class="place__text">
-              <p class="place__name">Карачаевск</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Карачаевск</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
           <li class="places__place place">
             <img class="place__image" src="./images/elbrus.jpg" alt="Эльбрус">
             <div class="place__text">
-              <p class="place__name">Гора Эльбрус</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Гора Эльбрус</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
           <li class="places__place place">
             <img class="place__image" src="./images/dombai.jpg" alt="Домбай">
             <div class="place__text">
-              <p class="place__name">Домбай</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Домбай</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
           <li class="places__place place">
             <img class="place__image" src="./images/baikal.jpg" alt="Байкал">
             <div class="place__text">
-              <p class="place__name">Озеро Байкал</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Озеро Байкал</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
           <li class="places__place place">
             <img class="place__image" src="./images/kamchatka.jpg" alt="Камчатка">
             <div class="place__text">
-              <p class="place__name">Камчатка</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Камчатка</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
           <li class="places__place place">
             <img class="place__image" src="./images/ruskeala.jpg" alt="Рускеала">
             <div class="place__text">
-              <p class="place__name">Рускеала</p>
-              <button class="place__like place__like_status_disabled"></button>
+              <h2 class="place__name">Рускеала</h2>
+              <button class="place__like place__like_status_disabled" type="button"></button>
             </div>  
           </li>
         </ul>
@@ -81,17 +81,19 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copyright">© 2021 Mesto Russia</p>
+      <p class="footer__copyright">&copy 2021 Mesto Russia</p>
     </footer>
 
     <div class="popup">
-      <form class="popup__container">
+      <fdiv class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input-name">
-        <input type="text" class="popup__input-job">
-        <button onclick="return false" class="popup__save-button">Сохранить</button>
-      </form>
-      <button class="popup__close-button"></button>
+        <form name="dataChange"> 
+          <input type="text" class="popup__input popup__input_data_name" name="inputName">
+          <input type="text" class="popup__input popup__input_data_job" name="inputJob">
+          <button type="button" class="popup__save-button">Сохранить</button>
+        </form>
+      </div>
+      <button type="button" class="popup__close-button"></button>
     </divS>
 
   </div>
