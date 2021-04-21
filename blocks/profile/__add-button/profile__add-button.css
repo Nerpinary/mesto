@@ -2,7 +2,7 @@
     width: 150px;
     height: 50px;
     background-color: black;
-    background-image: url(../../../images/plus.png);
+    background-image: url(../../../images/plus.svg);
     background-repeat: no-repeat;
     background-size: 22px;
     background-position: center;
@@ -29,5 +29,6 @@
     .profile__add-button {
         width: 100%;
         margin-top: 36px;
+        background-size: 16px;
     }
 }

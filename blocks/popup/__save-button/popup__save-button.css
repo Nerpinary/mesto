@@ -6,8 +6,9 @@
     line-height: 22px;
     color: white;
     border-radius: 2px;
-    overflow: hidden;
     border: none;
+    margin-bottom: 37px;
+    margin-top: 18px;
 }
 
 .popup__save-button:hover {
@@ -28,5 +29,8 @@
     .popup__save-button {
         font-size: 14px;
         line-height: 17px;
-    }
+        margin-bottom: 25px;
+        margin-top: 15px;
+}
+    
 }
