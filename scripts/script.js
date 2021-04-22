@@ -26,7 +26,7 @@ editButton.addEventListener("click", openPopUp);
 
 closeButton.addEventListener("click", closePopUp);
 
-save.addEventListener("click", saveChanges);
+save.addEventListener("submit", saveChanges);
 
 function saveChanges() {
     textName.textContent = inputName.value;
