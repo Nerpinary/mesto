@@ -1,6 +1,7 @@
 .places__list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 0.7fr;
     row-gap: 20px;
     column-gap: 17px;
     padding: 0;

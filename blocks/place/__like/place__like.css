@@ -2,7 +2,9 @@
     width: 22px;
     height: 19px;
     border: none;
+    transition: 0.3s;
     background-color: white;
+    margin-left: 10px;
 }
 
 .place__like:hover {
