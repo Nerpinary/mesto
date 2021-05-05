@@ -20,10 +20,11 @@ const formElementEdit = document.querySelector("#formElementEdit");
 const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
-
+let cardsElement = "";
 
 function createCard(data) {
-    const cardsElement = cardsTemplate.cloneNode(true);
+    cardsElement = cardsTemplate.cloneNode(true);
+    
     const cardsElementName = cardsElement.querySelector(".place__name");
     const cardsElementImage = cardsElement.querySelector(".place__image");
     const cardsElementLike = cardsElement.querySelector(".place__like");
@@ -42,18 +43,20 @@ function createCard(data) {
     cardsElementLike.addEventListener("click", (evt) => {
         evt.target.classList.toggle("place__like_status_enabled");
     });
-    cardsList.append(cardsElement);
-}
 
-function renderCard(wrap) {
-    wrap.append(createCard);
+    return cardsElement;
+};
+
+
+function renderCard(data) {
+    cardsList.append(createCard(data));
 };
 
 function addCard(data, wrap) {
     wrap.prepend(createCard(data));
 };
 
-initialCards.forEach(createCard);
+initialCards.forEach(renderCard);
 
 function deleteElement(evt) {
     evt.target.closest(".place").remove();
@@ -93,9 +96,17 @@ function saveChanges(event) {
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", openPopupAdd);
 
-closeEditButton.addEventListener("click", closePopup(popupEdit));
-closeAddButton.addEventListener("click", closePopup(popupAdd));
-closeImageButton.addEventListener("click", closePopup(popupImage));
+closeEditButton.addEventListener("click", () => {
+    closePopup(popupEdit);
+});
+
+closeAddButton.addEventListener("click", () => {
+    closePopup(popupAdd);
+});
+
+closeImageButton.addEventListener("click", () => {
+    closePopup(popupImage);
+});
 
 formElementEdit.addEventListener("submit", saveChanges);
 formElementAdd.addEventListener("submit", function addItem(event) {
@@ -106,7 +117,8 @@ formElementAdd.addEventListener("submit", function addItem(event) {
         link: inputLink.value
     }, cardsList);
     
-    formElementAdd.reset();
+    inputPlace.value = "";
+    inputLink.value = "";
 
     closePopup(popupAdd);
 });
