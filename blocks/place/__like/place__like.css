@@ -1,5 +1,9 @@
 .place__like {
-    width: 22px;
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px;
+    width: 24px;
     height: 19px;
     border: none;
     transition: 0.3s;
