@@ -11,6 +11,8 @@ const closeAddButton = document.querySelector("#closeAddButton");
 const closeImageButton = document.querySelector("#closeImageButton");
 const inputName = document.querySelector(".popup__input_data_name");
 const inputJob = document.querySelector(".popup__input_data_job");
+const inputPlace = document.querySelector(".popup__input_data_place");
+const inputLink = document.querySelector(".popup__input_data_link");
 const textName = profile.querySelector(".profile__name");
 const textJob = profile.querySelector(".profile__job");
 const textPlace = document.querySelector("place__name");
@@ -19,7 +21,8 @@ const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
 
-function getCard(data) {
+
+function createCard(data) {
     const cardsElement = cardsTemplate.cloneNode(true);
     const cardsElementName = cardsElement.querySelector(".place__name");
     const cardsElementImage = cardsElement.querySelector(".place__image");
@@ -39,35 +42,18 @@ function getCard(data) {
     cardsElementLike.addEventListener("click", (evt) => {
         evt.target.classList.toggle("place__like_status_enabled");
     });
+    cardsList.append(cardsElement);
 }
 
-function renderCard(data, wrap) {
-    wrap.prepend(getCard(data));
-}
+function renderCard(wrap) {
+    wrap.append(createCard);
+};
 
-initialCards.forEach(function (data) {
-    const cardsElement = cardsTemplate.cloneNode(true);
-    const cardsElementName = cardsElement.querySelector(".place__name");
-    const cardsElementImage = cardsElement.querySelector(".place__image");
-    const cardsElementLike = cardsElement.querySelector(".place__like");
-    const deleteCard = cardsElement.querySelector(".place__delete-button");
+function addCard(data, wrap) {
+    wrap.prepend(createCard(data));
+};
 
-    cardsElementName.textContent = element.name;
-    cardsElementImage.src = element.link; 
-    cardsElementImage.alt = element.name;
-
-    cardsElementImage.addEventListener("click", () => {
-        openPopupImage(element.link, element.name);
-    })
-
-    deleteCard.addEventListener("click", deleteElement);
-
-    cardsElementLike.addEventListener("click", (evt) => {
-        evt.target.classList.toggle("place__like_status_enabled");
-    });
-
-    cardsList.append(cardsElement)
-}); 
+initialCards.forEach(createCard);
 
 function deleteElement(evt) {
     evt.target.closest(".place").remove();
@@ -104,33 +90,6 @@ function saveChanges(event) {
     closePopup(popupEdit);
 };
 
-function renderCard(data, wrap) {
-    wrap.prepend(getCard(data));
-}
-
-function addCard(placeValue, linkValue) {
-    const placeTemplate = document.querySelector(".place-template").content;
-    const cardElement = placeTemplate.querySelector(".place").cloneNode(true);
-  
-    cardElement.querySelector(".place__name").textContent = placeValue;
-    cardElement.querySelector(".place__image").src = linkValue;
-
-    cardElement.querySelector(".place__image").addEventListener("click", function () {
-        openPopupImage(linkValue, placeValue);
-    })
-
-    const deleteCard = cardElement.querySelector(".place__delete-button");
-    deleteCard.addEventListener("click", function (evt) {
-        evt.target.closest(".place").remove();
-    });
-
-    cardElement.querySelector(".place__like").addEventListener("click", function (evt) {
-    evt.target.classList.toggle("place__like_status_enabled");
-  }); 
-
-    cardsList.prepend(cardElement);
-}
-
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", openPopupAdd);
 
@@ -142,10 +101,12 @@ formElementEdit.addEventListener("submit", saveChanges);
 formElementAdd.addEventListener("submit", function addItem(event) {
     event.preventDefault();
 
-    const place = document.querySelector(".popup__input_data_place");
-    const link = document.querySelector(".popup__input_data_link");
-
-    addCard(place.value, link.value);
+    addCard({
+        name: inputPlace.value,
+        link: inputLink.value
+    }, cardsList);
+    
+    formElementAdd.reset();
 
     closePopup(popupAdd);
 });
