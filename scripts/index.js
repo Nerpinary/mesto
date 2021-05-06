@@ -20,7 +20,6 @@ const formElementEdit = document.querySelector("#formElementEdit");
 const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
-let cardsElement = "";
 
 function createCard(data) {
     cardsElement = cardsTemplate.cloneNode(true);
@@ -62,12 +61,28 @@ function deleteElement(evt) {
     evt.target.closest(".place").remove();
 };
 
-function openPopup(popup) {
-    popup.classList.add("popup_opened");
+function profileFormSubmitHandler(event) {
+    event.preventDefault();
+    textName.textContent = inputName.value;
+    textJob.textContent = inputJob.value;
+    closePopup(popupEdit);
 };
 
-function closePopup(popup) {
-    popup.classList.remove("popup_opened");
+function cardFormSubmitHandler(event) {
+    event.preventDefault();
+
+    addCard({
+        name: inputPlace.value,
+        link: inputLink.value
+    }, cardsList);
+    
+    formElementAdd.reset();
+
+    closePopup(popupAdd);
+};
+
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
 };
 
 function openPopupEdit() {
@@ -83,42 +98,20 @@ function openPopupAdd() {
 function openPopupImage(image, caption) {
     openPopup(popupImage);
     imagePopup.src = image;
+    imagePopup.alt = caption;
     captionPopup.textContent = caption; 
 };
 
-function saveChanges(event) {
-    event.preventDefault();
-    textName.textContent = inputName.value;
-    textJob.textContent = inputJob.value;
-    closePopup(popupEdit);
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
 };
 
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", openPopupAdd);
 
-closeEditButton.addEventListener("click", () => {
-    closePopup(popupEdit);
-});
+closeEditButton.addEventListener("click", () => closePopup(popupEdit));
+closeAddButton.addEventListener("click", () => closePopup(popupAdd));
+closeImageButton.addEventListener("click", () => closePopup(popupImage));
 
-closeAddButton.addEventListener("click", () => {
-    closePopup(popupAdd);
-});
-
-closeImageButton.addEventListener("click", () => {
-    closePopup(popupImage);
-});
-
-formElementEdit.addEventListener("submit", saveChanges);
-formElementAdd.addEventListener("submit", function addItem(event) {
-    event.preventDefault();
-
-    addCard({
-        name: inputPlace.value,
-        link: inputLink.value
-    }, cardsList);
-    
-    inputPlace.value = "";
-    inputLink.value = "";
-
-    closePopup(popupAdd);
-});
+formElementEdit.addEventListener("submit", profileFormSubmitHandler);
+formElementAdd.addEventListener("submit", cardFormSubmitHandler);
