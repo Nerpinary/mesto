@@ -8,7 +8,7 @@
     border-radius: 2px;
     border: none;
     margin-bottom: 37px;
-    margin-top: 18px;
+    margin-top: 48px;
 }
 
 .popup__add-place-button:hover {
@@ -23,6 +23,14 @@
 
 .popup__add-place-button:active {
     border: none;
+}
+
+.popup__add-place-button:disabled {
+    opacity: 0.2;
+    background-color: white;
+    color: black;
+    cursor: default;
+    border: 1px solid black;
 }
 
 @media screen and (max-width: 550px) {
