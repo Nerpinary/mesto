@@ -94,13 +94,6 @@ function openPopup(popup) {
 function openPopupEdit() {
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
-    enableValidation({
-        formSelector: ".popup__form",
-        inputSelector: ".popup__input",
-        submitButtonSelector: ".popup__submit",
-        inputErrorClass: ".popup__input_data_error",
-        errorClass: ".popup__input-error"
-      });
     openPopup(popupEdit);
 };
 
