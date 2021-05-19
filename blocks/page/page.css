@@ -4,6 +4,8 @@
     padding-bottom: 60px;
     box-sizing: border-box;
     background-color: black;
+    min-height: 100vh;
+    background-size: cover;
     color: white;
     font-family: Inter, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
