@@ -78,22 +78,25 @@ function cardFormSubmitHandler(event) {
     closePopup(popupAdd);
 };
 
+enableValidation();
+
+function resetErrors(formElement) {
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    inputList.forEach((inputElement) => {
+        checkInputValidity(formElement, inputElement);
+    });
+};
+
 function openPopup(popup) {
     popup.classList.add("popup_opened");
-    escapeClose(popup);
-    overlayClose(popup);
-    enableValidation({
-        formSelector: ".popup__form",
-        inputSelector: ".popup__input",
-        submitButtonSelector: ".popup__submit",
-        inputErrorClass: ".popup__input_data_error",
-        errorClass: ".popup__input-error"
-      });
+    document.addEventListener("keydown", handleEscUp);
+    document.addEventListener("click", handleOverlayClick);
 };
 
 function openPopupEdit() {
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
+    resetErrors(formElementEdit);
     openPopup(popupEdit);
 };
 
@@ -104,28 +107,31 @@ function openPopupImage(image, caption) {
     captionPopup.textContent = caption; 
 };
 
-function escapeClose(popup) {
-    document.addEventListener("keydown", (evt) => {
-    if (evt.key === 'Escape') {
-        closePopup(popup);
-};
-});
+function handleEscUp(evt) {
+    const popupActive = document.querySelector(".popup_opened");
+    if (evt.key === "Escape") {
+        closePopup(popupActive);
+    };
 };
 
-function overlayClose(popup) {
-    popup.addEventListener("click", (evt) => {
-        if (evt.target.classList.contains("popup") || evt.target.classList.contains("popup__close-button")) {
-            closePopup(popup);
-        };
-    });
-}
+function handleOverlayClick(evt) {
+    const popupActive = document.querySelector(".popup_opened");
+    if (evt.target.classList.contains("popup") || evt.target.classList.contains("popup__close-button")) {
+        closePopup(popupActive);
+    };
+};
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", handleEscUp);
+    document.removeEventListener("click", handleOverlayClick);
 };
 
 editButton.addEventListener("click", openPopupEdit);
-addButton.addEventListener("click", () => openPopup(popupAdd));
+addButton.addEventListener("click", () => {
+    openPopup(popupAdd);
+    resetButton(formElementAdd)
+});
 
 formElementEdit.addEventListener("submit", profileFormSubmitHandler);
 formElementAdd.addEventListener("submit", cardFormSubmitHandler);
