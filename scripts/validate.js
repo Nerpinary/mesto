@@ -34,6 +34,13 @@ const resetButton = (formElement) => {
     toggleButtonState(inputList, buttonElement);
 };
 
+function resetErrors(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {
+      checkInputValidity(formElement, inputElement);
+  });
+};
+
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;

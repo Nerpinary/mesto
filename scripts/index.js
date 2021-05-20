@@ -80,13 +80,6 @@ function cardFormSubmitHandler(event) {
 
 enableValidation();
 
-function resetErrors(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-    inputList.forEach((inputElement) => {
-        checkInputValidity(formElement, inputElement);
-    });
-};
-
 function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", handleEscUp);
