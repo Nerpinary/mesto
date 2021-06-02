@@ -18,6 +18,7 @@ const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
 
+/* 
 function createCard(data) {
     cardsElement = cardsTemplate.cloneNode(true);
     
@@ -43,7 +44,6 @@ function createCard(data) {
     return cardsElement;
 };
 
-
 function renderCard(data) {
     cardsList.append(createCard(data));
 };
@@ -52,11 +52,13 @@ function addCard(data, wrap) {
     wrap.prepend(createCard(data));
 };
 
-initialCards.forEach(renderCard);
+initialCards.forEach(renderCard); 
+
 
 function deleteElement(evt) {
     evt.target.closest(".place").remove();
 };
+*/
 
 function profileFormSubmitHandler(event) {
     event.preventDefault();
