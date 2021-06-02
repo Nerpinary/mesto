@@ -18,48 +18,6 @@ const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
 
-/* 
-function createCard(data) {
-    cardsElement = cardsTemplate.cloneNode(true);
-    
-    const cardsElementName = cardsElement.querySelector(".place__name");
-    const cardsElementImage = cardsElement.querySelector(".place__image");
-    const cardsElementLike = cardsElement.querySelector(".place__like");
-    const deleteCard = cardsElement.querySelector(".place__delete-button");
-
-    cardsElementName.textContent = data.name;
-    cardsElementImage.src = data.link; 
-    cardsElementImage.alt = data.name;
-
-    cardsElementImage.addEventListener("click", () => {
-        openPopupImage(data.link, data.name);
-    })
-
-    deleteCard.addEventListener("click", deleteElement);
-
-    cardsElementLike.addEventListener("click", (evt) => {
-        evt.target.classList.toggle("place__like_status_enabled");
-    });
-
-    return cardsElement;
-};
-
-function renderCard(data) {
-    cardsList.append(createCard(data));
-};
-
-function addCard(data, wrap) {
-    wrap.prepend(createCard(data));
-};
-
-initialCards.forEach(renderCard); 
-
-
-function deleteElement(evt) {
-    evt.target.closest(".place").remove();
-};
-*/
-
 function profileFormSubmitHandler(event) {
     event.preventDefault();
     textName.textContent = inputName.value;
@@ -80,8 +38,6 @@ function cardFormSubmitHandler(event) {
     closePopup(popupAdd);
 };
 
-enableValidation();
-
 function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", handleEscUp);
@@ -91,7 +47,6 @@ function openPopup(popup) {
 function openPopupEdit() {
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
-    resetErrors(formElementEdit);
     openPopup(popupEdit);
 };
 
@@ -125,7 +80,6 @@ function closePopup(popup) {
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", () => {
     openPopup(popupAdd);
-    resetButton(formElementAdd)
 });
 
 formElementEdit.addEventListener("submit", profileFormSubmitHandler);
