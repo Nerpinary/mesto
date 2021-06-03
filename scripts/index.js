@@ -55,7 +55,7 @@ function cardFormSubmitHandler(event) {
     closePopup(popupAdd);
 };
 
-function openPopup(popup) {
+export function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", handleEscUp);
     document.addEventListener("click", handleOverlayClick);
@@ -65,7 +65,7 @@ function openPopupEdit() {
     
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
-    validate.enableValidation();
+    validate.enableValidation(formElementEdit);
     openPopup(popupEdit);
 };
 
@@ -92,6 +92,7 @@ function closePopup(popup) {
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", () => {
     openPopup(popupAdd);
+    validate.enableValidation(formElementAdd);
 });
 
 formElementEdit.addEventListener("submit", profileFormSubmitHandler);

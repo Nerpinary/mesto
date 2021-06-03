@@ -1,3 +1,4 @@
+import {openPopup} from './index.js'
 const initialCards = [
     {
       name: "Архыз",
