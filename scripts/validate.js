@@ -1,3 +1,4 @@
+/*
 const config = {
 formSelector: ".popup__form", 
 inputSelector: ".popup__input", 
@@ -77,3 +78,4 @@ const enableValidation = () => {
     setEventListeners(formElement); 
     }); 
 }; 
+*/

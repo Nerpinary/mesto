@@ -52,6 +52,8 @@ class Card {
     };
 
     _openPopupImage(image, caption) {
+        const imagePopup = document.querySelector(".popup__image");
+        const captionPopup = document.querySelector(".popup__image-caption");
         openPopup(popupImage);
         imagePopup.src = image;
         imagePopup.alt = caption;
@@ -71,16 +73,6 @@ class Card {
             evt.target.classList.toggle("place__like_status_enabled");
         });
     }
-}
-
-function addCard(data, wrap) {
-    const card = new Card(data, ".place-template");
-    const cardElement = card.generateCard();
-    wrap.prepend(cardElement);
 };
 
-initialCards.forEach((item) => {
-  const card = new Card(item, ".place-template");
-  const cardElement = card.generateCard();
-  document.querySelector(".places__list").append(cardElement);
-});
+export {initialCards, Card};

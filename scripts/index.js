@@ -1,3 +1,5 @@
+import {initialCards, Card} from "./Card.js";
+import {config, FormValidator} from "./FormValidator.js";
 const profile = document.querySelector(".profile");
 const editButton = profile.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -17,11 +19,26 @@ const formElementEdit = document.querySelector("#formElementEdit");
 const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
 const cardsTemplate = document.querySelector(".place-template").content;
+const validate = new FormValidator(config);
+
+function addCard(data, wrap) {
+    const card = new Card(data, ".place-template");
+    const cardElement = card.generateCard();
+    wrap.prepend(cardElement);
+};
+
+initialCards.forEach((item) => {
+  const card = new Card(item, ".place-template");
+  const cardElement = card.generateCard();
+  document.querySelector(".places__list").append(cardElement);
+});
 
 function profileFormSubmitHandler(event) {
+    
     event.preventDefault();
     textName.textContent = inputName.value;
     textJob.textContent = inputJob.value;
+
     closePopup(popupEdit);
 };
 
@@ -34,7 +51,7 @@ function cardFormSubmitHandler(event) {
     }, cardsList);
     
     formElementAdd.reset();
-
+    
     closePopup(popupAdd);
 };
 
@@ -45,16 +62,11 @@ function openPopup(popup) {
 };
 
 function openPopupEdit() {
+    
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
+    validate.enableValidation();
     openPopup(popupEdit);
-};
-
-function openPopupImage(image, caption) {
-    openPopup(popupImage);
-    imagePopup.src = image;
-    imagePopup.alt = caption;
-    captionPopup.textContent = caption; 
 };
 
 function handleEscUp(evt) {
