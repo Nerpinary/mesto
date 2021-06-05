@@ -14,7 +14,8 @@ const textJob = profile.querySelector(".profile__job");
 const formElementEdit = document.querySelector("#formElementEdit");
 const formElementAdd = document.querySelector("#formElementAdd");
 const cardsList = document.querySelector(".places__list");
-const validate = new FormValidator(config);
+const validateAdd = new FormValidator(config, formElementAdd);
+const validateEdit = new FormValidator(config, formElementEdit);
 
 function addCard(data, wrap) {
     const card = new Card(data, ".place-template");
@@ -22,11 +23,12 @@ function addCard(data, wrap) {
     wrap.prepend(cardElement);
 };
 
-initialCards.forEach((item) => {
-  const card = new Card(item, ".place-template");
-  const cardElement = card.generateCard();
-  document.querySelector(".places__list").append(cardElement);
+initialCards.reverse().forEach((item) => {
+    addCard(item, cardsList);
 });
+
+validateAdd.enableValidation();
+validateEdit.enableValidation();
 
 function profileFormSubmitHandler(event) {
     event.preventDefault();
@@ -54,7 +56,7 @@ export function openPopup(popup) {
 function openPopupEdit() {
     inputName.value = textName.textContent;
     inputJob.value = textJob.textContent;
-    validate.enableValidation(formElementEdit);
+    validateEdit.resetErrors()
     openPopup(popupEdit);
 };
 
@@ -81,7 +83,7 @@ function closePopup(popup) {
 editButton.addEventListener("click", openPopupEdit);
 addButton.addEventListener("click", () => {
     openPopup(popupAdd);
-    validate.enableValidation(formElementAdd);
+    validateAdd.resetErrors()
 });
 
 formElementEdit.addEventListener("submit", profileFormSubmitHandler);
