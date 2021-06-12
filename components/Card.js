@@ -1,4 +1,6 @@
-import { openPopup } from "./index.js";
+import { openPopup, popupImage } from "../scripts/index.js";
+import {PopupWithImage} from "./Popup.js"
+
 const initialCards = [
   {
     name: "Архыз",
@@ -27,9 +29,10 @@ const initialCards = [
 ];
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this.handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -51,20 +54,11 @@ class Card {
     return this._element;
   }
 
-  _openPopupImage(image, caption) {
-    const imagePopup = document.querySelector(".popup__image");
-    const captionPopup = document.querySelector(".popup__image-caption");
-    openPopup(popupImage);
-    imagePopup.src = image;
-    imagePopup.alt = caption;
-    captionPopup.textContent = caption;
-  }
-
   _setEventListeners() {
     this._element
       .querySelector(".place__image")
       .addEventListener("click", () => {
-        this._openPopupImage(this._link, this._name);
+        this.handleCardClick(this._link, this._name)
       });
 
     this._element
