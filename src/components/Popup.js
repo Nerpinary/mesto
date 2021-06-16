@@ -1,17 +1,23 @@
+import UserInfo from "./UserInfo.js";
+import {userInfo} from "./UserInfo.js"
+import { textName, textJob, inputName, inputJob, formElementAdd, formElementEdit} from "../utils/constants.js";
+import { addFormSubmit, editFormSubmit } from "../index.js";
+
+
 export class Popup {
     constructor(popupSelector) {
       this._popupSelector = popupSelector;
+      this.listener = this._handleOverlayClick.bind(this)
     }
-  
+
     open() {
         this._popupSelector.classList.add("popup_opened");
-        this.setEventListeners();
+        this.setEventListeners()
     }
 
     close() {
         this._popupSelector.classList.remove("popup_opened");
-        document.removeEventListener("keydown", this._handleEscUp.bind(this));
-        document.removeEventListener("click", this._handleOverlayClick.bind(this));
+        document.removeEventListener("click", this.listener);
     }
 
     _handleEscUp(evt) {
@@ -30,8 +36,8 @@ export class Popup {
     }
 
     setEventListeners() {
-        document.addEventListener("keydown", this._handleEscUp.bind(this));
-        document.addEventListener("click", this._handleOverlayClick.bind(this));
+        document.addEventListener("keydown", this._handleEscUp.bind(this), {once: true});
+        document.addEventListener("click", this.listener) 
     }
 }
 
@@ -51,21 +57,28 @@ export class PopupWithImage extends Popup {
 }
 
 export class PopupWithForm extends Popup {
-    constructor(popupSelector, handleFormSubmit) {
-        this._popupSelector = popupSelector;
+    constructor({popupSelector, handleFormSubmit}) {
+        super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
       }
     
     _getInputValues() {
-
+        const userInformation = new UserInfo(textName, textJob);
+        userInformation.getUserInfo();
+        inputName.value = userInfo.name;
+        inputJob.value = userInfo.job;
     }
 
     setEventListeners() {
-
+        super.setEventListeners();
+        this._getInputValues();
+        this._handleFormSubmit();
     }
 
     close() {
-      event.preventDefault()
-      s
+        super.close();
+        formElementAdd.reset();
+        formElementEdit.removeEventListener("submit", editFormSubmit)
+        formElementAdd.removeEventListener("submit", addFormSubmit)
     }
 }
