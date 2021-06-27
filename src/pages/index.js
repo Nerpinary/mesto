@@ -6,7 +6,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import {editButton, textName, textJob, addButton, inputName, inputJob, inputPlace, inputLink, formElementEdit, formElementAdd} from "../utils/constants.js"
+import {editButton, textName, textJob, addButton, inputName, inputJob, formElementEdit, formElementAdd} from "../utils/constants.js"
 import {initialCards} from "../utils/initialCards.js";
 import {config} from "../utils/config.js";
 
@@ -62,13 +62,13 @@ function getInfo() {
   inputJob.value = userInfo.getUserInfo().job;
 }
 
-export function editListener() {
+function editListener() {
   popupWithEditForm.open();
   getInfo();
   validateEdit.resetErrors();
 };
 
-export function addListener() {
+function addListener() {
   popupWithAddForm.open();
   validateAdd.resetErrors();
 };
