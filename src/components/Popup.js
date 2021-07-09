@@ -3,7 +3,6 @@ export default class Popup {
       this._popupElement = document.querySelector(popupSelector);
       this._mousedownListener = this._handleOverlayClick.bind(this);
       this._keydownListener = this._handleEscUp.bind(this);
-      console.log(this._popupElement);
     }
 
     open() {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <link rel="stylesheet" href="./pages/index.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Место">
@@ -18,7 +19,9 @@
       
       <section class="profile">
         <div class="profile__description">
-          <img class="profile__avatar" src="<%=require("./images/avatar.png")%>" alt="Аватар">
+          <div class="profile__avatar-box">
+            <button class="profile__avatar-edit-button"><img class="profile__avatar" src="./images/avatar.png" alt="Аватар"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name-button">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -80,18 +83,45 @@
       </div>
     </div>
 
+    <div class="popup" id="popupDelete">
+      <div class="popup__container">
+        <form name="deleteCard" class="popup__form form" id="formElementDelete">
+          <h3 class="popup__title">Вы уверены?</h3>
+          <button type="submit" class="popup__delete-button popup__submit">Да</button>
+        </form>
+        <button type="button" class="popup__close-button" id="closeAddButton"></button>
+      </div>
+    </div>
+
+    <div class="popup" id="popupAvatarEdit">
+      <div class="popup__container">
+        <form name="avatarChange" class="popup__form form" id="formElementAvatarEdit" novalidate>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <input type="url" class="popup__input popup__input_data_avatar_link" id="avatar-link-input" name="inputAvatarLink" placeholder="Ссылка на фото" required>
+          <span class="popup__input-error avatar-link-input-error"></span>
+          <button type="submit" class="popup__save-button popup__submit">Сохранить</button>
+        </form>
+        <button type="button" class="popup__close-button" id="closeEditButton"></button>
+      </div>
+    </div>
+
   </div>
 
   <template class="place-template">
     <li class="place">
       <img class="place__image">
-      <button class="place__delete-button" type="button"></button>
+      <button class="place__delete-button place__delete-button_hidden" type="button"></button>
       <div class="place__text">
         <h2 class="place__name"></h2>
-        <button class="place__like" type="button"></button>
+        <div class="plase__likes">
+          <button class="place__like" type="button"></button>
+          <span class="place__like-meter">0</span>
+        </div>
       </div>  
     </li>
   </template>
   
+<script type="module" src="./pages/index.js"></script>
+
 </body>
 </html>

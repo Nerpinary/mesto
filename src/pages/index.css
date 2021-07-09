@@ -40,3 +40,9 @@
 @import url(../blocks/popup/__add-place-button/popup__add-place-button.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__close-button/_place/popup__close-button_place_image.css);
+@import url(../blocks/place/__likes/place__likes.css);
+@import url(../blocks/place/__like-meter/place__like-meter.css);
+@import url(../blocks/popup/__delete-button/popup__delete-button.css);
+@import url(../blocks/profile/__avatar-box/profile__avatar-box.css);
+@import url(../blocks/profile/__avatar-edit-button/profile__avatar-edit-button.css);
+@import url(../blocks/place/__delete-button/_hidden/place__delete-button_hidden.css);
