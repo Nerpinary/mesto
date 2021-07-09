@@ -1,4 +1,4 @@
-//import "./index.css";
+import "./index.css";
 
 import Api from "../components/Api.js";
 import Card from "../components/Card.js";
@@ -7,7 +7,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import {editButton, textName, textJob, avatar, addButton, inputName, inputJob, formElementEdit, formElementAdd, formElementAvatarEdit, profileAvatar, avatarEditButton} from "../utils/constants.js";
+import {editButton, textName, textJob, avatar, addButton, inputName, inputJob, formElementEdit, formElementAdd, formElementAvatarEdit, avatarEditButton} from "../utils/constants.js";
 import {config, apiConfig} from "../utils/config.js";
 import PopupWithDeleteButton from "../components/PopupWithDeleteButton.js";
 
@@ -173,10 +173,6 @@ function avatarEditListener() {
   popupWithAvatarEditForm.open();
   validateAvatarEdit.resetErrors();
 }
-
-console.log(baseUrl);
-console.log(token);
-console.log(api.getInitialCards());
 
 validateAdd.enableValidation();
 validateEdit.enableValidation();
